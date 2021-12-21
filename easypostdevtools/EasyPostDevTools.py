@@ -134,7 +134,7 @@ class EasyPostDevTools:
             return [easypost.Address.create(**_map) for _map in maps]
 
         @staticmethod
-        def get_maps(relationship: ADDRESS_RELATIONSHIP, amount: int) -> Union[None, list[dict]]:
+        def get_maps_amount(relationship: ADDRESS_RELATIONSHIP, amount: int) -> Union[None, list[dict]]:
             if relationship == EasyPostDevTools.Addresses.ADDRESS_RELATIONSHIP.SAME_STATE:
                 return EasyPostDevTools.Addresses.get_maps_same_state(amount)
             elif relationship == EasyPostDevTools.Addresses.ADDRESS_RELATIONSHIP.DIFFERENT_STATE:
@@ -159,18 +159,17 @@ class EasyPostDevTools:
             else:
                 return []
 
-    class Parcels(Mapper):
+    class Parcels:
         def __init__(self):
-            super().__init__()
             pass
 
         @staticmethod
         def get_map() -> dict:
             return {
-                "weight": Random.get_random_float_in_range(0, 100),
-                "height": Random.get_random_float_in_range(0, 100),
-                "width": Random.get_random_float_in_range(0, 100),
-                "length": Random.get_random_float_in_range(0, 100)
+                "weight": Random.get_random_float_in_range(0.0, 100.0),
+                "height": Random.get_random_float_in_range(0.0, 100.0),
+                "width": Random.get_random_float_in_range(0.0, 100.0),
+                "length": Random.get_random_float_in_range(0.0, 100.0)
             }
 
         @staticmethod
