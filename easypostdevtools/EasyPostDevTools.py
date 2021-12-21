@@ -265,12 +265,11 @@ class EasyPostDevTools:
 
         @staticmethod
         def get(shipment_map: dict = None, shipment: easypost.Shipment = None) -> list[easypost.Rate]:
-            if shipment:
-                return shipment.get_rates()
-            else:
+            if not shipment:
                 if not shipment_map:
                     shipment_map = EasyPostDevTools.Shipments.get_map()
-                return easypost.Shipment.create(**shipment_map).get_rates()
+                shipment = easypost.Shipment.create(**shipment_map)
+            return shipment.get_rates()
 
     class Smartrates(Mapper):
         def __init__(self):
@@ -279,12 +278,11 @@ class EasyPostDevTools:
 
         @staticmethod
         def get(shipment_map: dict = None, shipment: easypost.Shipment = None) -> list[easypost.Rate]:
-            if shipment:
-                return shipment.get_smartrates()
-            else:
+            if not shipment:
                 if not shipment_map:
                     shipment_map = EasyPostDevTools.Shipments.get_map()
-                return easypost.Shipment.create(**shipment_map).get_smartrates()
+                shipment = easypost.Shipment.create(**shipment_map)
+            return shipment.get_smartrates()
 
     class TaxIdentifiers(Mapper):
         def __init__(self):
@@ -353,12 +351,11 @@ class EasyPostDevTools:
 
         @staticmethod
         def get(shipment_map: dict = None, shipment: easypost.Shipment = None) -> list:
-            if shipment:
-                return shipment.fees
-            else:
+            if not shipment:
                 if not shipment_map:
                     shipment_map = EasyPostDevTools.Shipments.get_map()
-                return easypost.Shipment.create(**shipment_map).fees
+                shipment = easypost.Shipment.create(**shipment_map)
+            return shipment.fees
 
     class Orders:
         def __init__(self):
