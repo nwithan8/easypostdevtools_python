@@ -236,8 +236,7 @@ class EasyPostDevTools:
 
         @staticmethod
         def add_insurance(shipment: easypost.Shipment, amount: float = None) -> easypost.Shipment:
-            insurance_map = EasyPostDevTools.Insurance.get_map(amount)
-            return shipment.insure(**insurance_map)
+            EasyPostDevTools.Insurance.insure(shipment, amount)
 
         @staticmethod
         def refund(shipment: easypost.Shipment) -> easypost.Refund:
