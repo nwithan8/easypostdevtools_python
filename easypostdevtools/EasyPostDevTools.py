@@ -363,7 +363,6 @@ class EasyPostDevTools:
 
     class Pickups(Mapper):
         def __init__(self):
-            pass
             super().__init__()
             pass
 
