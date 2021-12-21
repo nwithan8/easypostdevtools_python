@@ -187,7 +187,7 @@ class EasyPostDevTools:
         @staticmethod
         def get_map(amount: float = None) -> dict:
             return {
-                "amount": amount if amount else Random.get_random_float_in_range(0, 100),
+                "amount": amount if amount else Random.get_random_float_in_range(0.0, 100.0),
             }
 
         @staticmethod
