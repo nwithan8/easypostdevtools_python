@@ -74,7 +74,7 @@ class EasyPostDevTools:
         @classmethod
         def get_map(cls, country: AddressesConstants.COUNTRY = None, state: AddressesConstants.STATE = None) -> dict:
             address_file = AddressesConstants.get_random_address_file(country, state)
-            return cls._get_maps_from_json_file(address_file, 1, False)[0]
+            return cls._get_map_from_json_file(address_file)
 
         @staticmethod
         def get(country: AddressesConstants.COUNTRY = None, state: AddressesConstants.STATE = None) -> easypost.Address:
@@ -247,7 +247,7 @@ class EasyPostDevTools:
             shipment_map['is_return'] = True
             return shipment_map
 
-        # waiting on ability to convert attributes to map to modify shipment for Shipment markForReturn
+        # waiting on ability to convert attributes to map to modify shipment for Shipment mar
 
     class Options(Mapper):
         def __init__(self):
