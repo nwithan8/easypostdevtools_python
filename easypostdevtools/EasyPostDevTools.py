@@ -71,6 +71,10 @@ class EasyPostDevTools:
             super().__init__()
             pass
 
+        @staticmethod
+        def _create(address_map: dict) -> easypost.Address:
+            return easypost.Address.create(**address_map)
+
         @classmethod
         def get_map(cls, country: AddressesConstants.COUNTRY = None, state: AddressesConstants.STATE = None) -> dict:
             address_file = AddressesConstants.get_random_address_file(country, state)
@@ -79,7 +83,7 @@ class EasyPostDevTools:
         @staticmethod
         def get(country: AddressesConstants.COUNTRY = None, state: AddressesConstants.STATE = None) -> easypost.Address:
             address_map = EasyPostDevTools.Addresses.get_map(country, state)
-            return easypost.Address.create(**address_map)
+            return EasyPostDevTools.Addresses._create(address_map)
 
         @classmethod
         def get_maps_same_state(cls, amount: int) -> list[dict]:
@@ -90,7 +94,7 @@ class EasyPostDevTools:
         @staticmethod
         def get_same_state(amount: int) -> list[easypost.Address]:
             maps = EasyPostDevTools.Addresses.get_maps_same_state(amount)
-            return [easypost.Address.create(**_map) for _map in maps]
+            return [EasyPostDevTools.Addresses._create(**_map) for _map in maps]
 
         @staticmethod
         def get_maps_different_states(amount: int) -> list[dict]:
@@ -105,7 +109,7 @@ class EasyPostDevTools:
         @staticmethod
         def get_different_states(amount: int) -> list[easypost.Address]:
             maps = EasyPostDevTools.Addresses.get_maps_different_states(amount)
-            return [easypost.Address.create(**_map) for _map in maps]
+            return [EasyPostDevTools.Addresses._create(**_map) for _map in maps]
 
         @classmethod
         def get_maps_same_country(cls, amount: int) -> list[dict]:
@@ -116,7 +120,7 @@ class EasyPostDevTools:
         @staticmethod
         def get_same_country(amount: int) -> list[easypost.Address]:
             maps = EasyPostDevTools.Addresses.get_maps_same_country(amount)
-            return [easypost.Address.create(**_map) for _map in maps]
+            return [EasyPostDevTools.Addresses._create(**_map) for _map in maps]
 
         @staticmethod
         def get_maps_different_countries(amount: int) -> list[dict]:
@@ -131,7 +135,7 @@ class EasyPostDevTools:
         @staticmethod
         def get_different_countries(amount: int) -> list[easypost.Address]:
             maps = EasyPostDevTools.Addresses.get_maps_different_countries(amount)
-            return [easypost.Address.create(**_map) for _map in maps]
+            return [EasyPostDevTools.Addresses._create(**_map) for _map in maps]
 
         @staticmethod
         def get_maps_amount(relationship: ADDRESS_RELATIONSHIP, amount: int) -> Union[None, list[dict]]:
