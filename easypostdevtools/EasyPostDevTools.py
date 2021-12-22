@@ -223,12 +223,12 @@ class EasyPostDevTools:
         @staticmethod
         def get(to_address_map: dict = None, from_address_map: dict = None, parcel_map: dict = None) -> easypost.Shipment:
             _map = EasyPostDevTools.Shipments.get_map(to_address_map, from_address_map, parcel_map)
-            return easypost.Shipment.create(**_map)
+            return EasyPostDevTools.Shipments.create(**_map)
 
         @staticmethod
         def get_return(to_address_map: dict = None, from_address_map: dict = None, parcel_map: dict = None) -> easypost.Shipment:
             _map = EasyPostDevTools.Shipments.get_return_map(to_address_map, from_address_map, parcel_map)
-            return easypost.Shipment.create(**_map)
+            return EasyPostDevTools.Shipments.create(**_map)
 
         @staticmethod
         def create(shipment_map: dict) -> easypost.Shipment:
