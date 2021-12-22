@@ -448,10 +448,9 @@ class EasyPostDevTools:
             pass
 
         @staticmethod
-        def get(shipment: easypost.Shipment = None, shipment_map: dict = None) -> easypost.PostageLabel:
-            if shipment:
-                return shipment.postage_label
-            else:
+        def get(shipment_map: dict = None, shipment: easypost.Shipment = None) -> easypost.PostageLabel:
+            if not shipment:
                 if not shipment_map:
                     shipment_map = EasyPostDevTools.Shipments.get_map()
-                return easypost.Shipment.create(**shipment_map).postage_label
+                shipment = easypost.Shipment.create(**shipment_map)
+            return shipment.postage_label
