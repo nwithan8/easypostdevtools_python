@@ -373,8 +373,9 @@ class EasyPostDevTools:
         @classmethod
         def get_map(cls) -> dict:
             _map = cls._get_map_from_json_file(Constants.PICKUPS_JSON)
-            to_address_map = EasyPostDevTools.Addresses.get_map()
-            from_address_map = EasyPostDevTools.Addresses.get_map()
+            address_map = EasyPostDevTools.Addresses.get_maps_same_country(2)
+            to_address_map = address_map[0]
+            from_address_map = address_map[1]
             _map['address'] = to_address_map
             parcel_map = EasyPostDevTools.Parcels.get_map()
             shipment_map = EasyPostDevTools.Shipments.get_map(parcel_map=parcel_map, from_address_map=from_address_map,
