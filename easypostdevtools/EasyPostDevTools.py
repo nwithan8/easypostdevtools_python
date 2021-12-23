@@ -21,7 +21,7 @@ class KeyType(Enum):
 
 
 def setup_key(key: str = None, env_dir: str = None, key_type: KeyType = None):
-    if not key and not env_dir and not key_type:
+    if not key and (not env_dir or not key_type):
         raise ValueError("Must provide either key, or envDir and keyType")
     if key:
         easypost.api_key = key
