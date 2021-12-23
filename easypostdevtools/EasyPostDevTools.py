@@ -251,7 +251,7 @@ class EasyPostDevTools:
             shipment_map['is_return'] = True
             return shipment_map
 
-        # waiting on ability to convert attributes to map to modify shipment for Shipment mar
+        # waiting on ability to convert attributes to map to modify shipment for Shipment mark for return
 
     class Options(Mapper):
         def __init__(self):
@@ -272,7 +272,7 @@ class EasyPostDevTools:
             if not shipment:
                 if not shipment_map:
                     shipment_map = EasyPostDevTools.Shipments.get_map()
-                shipment = easypost.Shipment.create(**shipment_map)
+                shipment = EasyPostDevTools.Shipments.create(**shipment_map)
             return shipment.get_rates()
 
     class Smartrates(Mapper):

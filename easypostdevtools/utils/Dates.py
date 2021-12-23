@@ -73,16 +73,10 @@ class Dates:
 
     @staticmethod
     def get_date_after(date: datetime) -> datetime:
-        if date.month == 12:
-            # if it's December, set up the next date to be in January
-            date.replace(month=1, day=1, year=date.year + 1)
         return date + timedelta(days=Random.get_random_int_in_range(1, 30))
 
     @staticmethod
     def get_date_before(date: datetime) -> datetime:
-        if date.month == 1:
-            # if it's January, set up the next date to be in December
-            date.replace(month=12, day=31, year=date.year - 1)
         return date - timedelta(days=Random.get_random_int_in_range(1, 30))
 
     @staticmethod
